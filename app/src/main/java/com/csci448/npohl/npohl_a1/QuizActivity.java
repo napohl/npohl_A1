@@ -1,4 +1,4 @@
-package com.csci448.npohl.geoquiz;
+package com.csci448.npohl.npohl_a1;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import static com.csci448.npohl.npohl_a1.QuestionType.TF;
+import static com.csci448.npohl.npohl_a1.QuestionType.MC;
+import static com.csci448.npohl.npohl_a1.QuestionType.FR;
 
 public class QuizActivity extends AppCompatActivity {
 
@@ -20,19 +24,17 @@ public class QuizActivity extends AppCompatActivity {
     private TextView mQuestionTextView;
 
     private Question[] mQuestionBank = new Question[] {
-        new Question(R.string.question_oceans, true),
-        new Question(R.string.question_mideast, false),
-        new Question(R.string.question_africa, false),
-        new Question(R.string.question_americas, true),
-        new Question(R.string.question_asia, true)
+        new Question(R.string.question_americas, R.string.true_button, TF),
+        new Question(R.string.question_landmass, R.string.answer_landmass_b, MC),
+        new Question(R.string.question_population, R.string.answer_population, FR)
     };
 
     private int mCurrentIndex = 0;
 
     private void updateQuestion() {
         int question = mQuestionBank[mCurrentIndex].getTextResId();
-        mQuestionTextView.setText(question);
-    }
+    mQuestionTextView.setText(question);
+}
 
     private void checkAnswer(boolean userPressedTrue) {
         boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();

@@ -16,4 +16,11 @@
         in the Americas.</string>
     <string name="question_asia">Lake Baikal is the world\'s oldest and deepest
         freshwater lake.</string>
+    <string name="question_landmass">Which country has the greatest landmass?</string>
+    <string name="answer_landmass_a">Canada</string>
+    <string name="answer_landmass_b">Russia</string>
+    <string name="answer_landmass_c">U.S.A</string>
+    <string name="answer_landmass_d">India</string>
+    <string name="question_population">What country has the largest population?</string>
+    <string name="answer_population">China</string>
 </resources>
