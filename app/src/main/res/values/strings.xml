@@ -23,4 +23,5 @@
     <string name="answer_landmass_d">India</string>
     <string name="question_population">What country has the largest population?</string>
     <string name="answer_population">China</string>
+    <string name="submit_button">Submit</string>
 </resources>
