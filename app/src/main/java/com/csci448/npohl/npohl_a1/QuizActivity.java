@@ -1,5 +1,6 @@
 package com.csci448.npohl.npohl_a1;
 
+import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -66,6 +67,12 @@ public class QuizActivity extends AppCompatActivity {
             mFreeResponseAnswer.setVisibility(View.GONE);
             mFreeResponseAnswer.setText("");
             mSubmitButton.setVisibility(View.GONE);
+
+            int choices[] = mQuestionBank[mCurrentIndex].getChoiceResId();
+            mAButton.setText(choices[0]);
+            mBButton.setText(choices[1]);
+            mCButton.setText(choices[2]);
+            mDButton.setText(choices[3]);
         }
 
         else if (type == FR) {
@@ -123,6 +130,22 @@ public class QuizActivity extends AppCompatActivity {
             messageResId = R.string.incorrect_toast;
         }
 
+    }
+
+    /**
+     * Adds all choices to all multiple choice questions
+     *
+     * Since the index of all multiple choice questions are known to the programmer, and
+     * the text for all the buttons is needed, an array of all the question choices is needed
+     * for all multiple choice questions. These need to be hard coded in.
+     */
+    private void addChoices() {
+        int landmassQuestion[] = new int[4];
+        landmassQuestion[0] = R.string.answer_landmass_a;
+        landmassQuestion[1] = R.string.answer_landmass_b;
+        landmassQuestion[2] = R.string.answer_landmass_c;
+        landmassQuestion[3] = R.string.answer_landmass_d;
+        mQuestionBank[1].setChoiceResId(landmassQuestion);
     }
 
     @Override
@@ -224,6 +247,7 @@ public class QuizActivity extends AppCompatActivity {
         }
 
         updateQuestion();
+        addChoices();
     }
 
     @Override

@@ -11,6 +11,7 @@ enum QuestionType {
 public class Question {
     private int mTextResId;
     private int mAnswerResId;
+    private int[] mChoiceResId;
     private QuestionType mType;
 
     /**
@@ -54,5 +55,13 @@ public class Question {
 
     public void setQuestionType(QuestionType type) {
         mType = type;
+    }
+
+    public int[] getChoiceResId() {
+        return mChoiceResId;
+    }
+
+    public void setChoiceResId(int[] choiceResId) {
+        mChoiceResId = choiceResId;
     }
 }
