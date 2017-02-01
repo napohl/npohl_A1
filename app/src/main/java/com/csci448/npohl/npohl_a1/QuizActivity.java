@@ -102,10 +102,13 @@ public class QuizActivity extends AppCompatActivity {
     private void checkAnswer(int buttonResId) {
 
         int answer = mQuestionBank[mCurrentIndex].getAnswerResId();
+        Button userClicked = (Button)findViewById(buttonResId);
+        String userAnswer = userClicked.getText().toString();
+        String correctAnswer = getString(answer);
 
         int messageResId = 0;
 
-        if (answer == buttonResId) {
+        if (correctAnswer.equalsIgnoreCase(userAnswer)) {
             messageResId = R.string.correct_toast;
         }
         else {
@@ -115,20 +118,26 @@ public class QuizActivity extends AppCompatActivity {
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * This checkAnswer checkf for the correct answer for FR types
+     *
+     * @param userAnswer the string that the user entered into the EditText
+     */
     private void checkAnswer(String userAnswer) {
 
         int answer = mQuestionBank[mCurrentIndex].getAnswerResId();
+        String correctAnswer = getString(answer);
 
         int messageResId = 0;
-        /*
-        TODO: Check how to access the string refrenced by the res id
-         */
-        if (true) {
+
+        if (correctAnswer.equalsIgnoreCase(userAnswer)) {
             messageResId = R.string.correct_toast;
         }
         else {
             messageResId = R.string.incorrect_toast;
         }
+
+        Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show();
 
     }
 
@@ -238,7 +247,9 @@ public class QuizActivity extends AppCompatActivity {
         mSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkAnswer(R.id.submit_button);
+                String response = mFreeResponseAnswer.getText().toString();
+                Log.d(TAG, "Submit Button pressed: " + response);
+                checkAnswer(response);
             }
         });
 
@@ -246,8 +257,9 @@ public class QuizActivity extends AppCompatActivity {
             mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
         }
 
-        updateQuestion();
         addChoices();
+        updateQuestion();
+
     }
 
     @Override
